@@ -1,0 +1,33 @@
+```
+#include <opencv2/opencv.hpp>
+#include <iostream>
+
+using namespace cv;
+
+int main ()
+{
+    std::cout << CV_VERSION << std::endl;
+    std::cout << "Halo kang" << std::endl;
+    cv::Mat a = cv::imread("C:/Users/ADVAN/Downloads/halo.jpg");
+    Mat b;
+    b = Mat(100,100, CV_64FC4, Scalar(0,0,255));
+    imshow("b", b);
+
+    Mat gray;
+    cvtColor(a, gray, COLOR_BGR2GRAY);
+    imshow("grayscale", gray);
+    Mat ROI(a, Rect (10,10,100,100));
+    cv::imshow("windows", a);
+    bool success = imwrite("C:/Users/ADVAN/Downloads/halo2.jpg", gray);
+    if(!success)
+    {
+        std::cerr << "Gagal menyimpan bos!" << std::endl;
+        return -1;
+    } else
+    {
+        std::cout << "Sudah kesimpan bos!" << std::endl;
+    }
+    cv::waitKey(0);
+    return 0;
+}
+```
